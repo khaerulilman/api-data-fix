@@ -1,0 +1,44 @@
+GET http://localhost:5000/menu
+
+###
+GET http://localhost:5000/pesanan
+
+###
+POST http://localhost:5000/pesanan
+Content-Type: application/json
+
+{
+  "nama_pesanan" : "ayam goreng",
+  "quantity": 5,
+  "nama_pelanggan": "andi",
+  "no_meja": 5
+}
+
+###
+POST http://localhost:5000/feedback
+Content-Type: application/json
+
+{
+  "nama_hidangan" : "ayam goreng",
+  "rating" : 4,
+  "komentar" : "kurang pedas"
+}
+
+###
+PUT http://localhost:5000/pesanan/2/status-pembayaran
+Content-Type: application/json
+
+{
+  "status_pembayaran": true
+}
+
+###
+PUT http://localhost:5000/pesanan/1/status-pesanan
+Content-Type: application/json
+
+{
+  "status_pesanan": true
+}
+
+###
+DELETE http://localhost:5000/pesanan/36
