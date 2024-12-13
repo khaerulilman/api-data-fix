@@ -2,10 +2,12 @@ import express from "express";
 import getMenu from "../controllers/MenuController.js"; // Pastikan impor dengan { }
 import createPesanan from "../controllers/testPesananController.js";
 import createFeedback from "../controllers/FeedbackController.js";
+import authMiddleware from '../middlewares/authMiddleware.js'; // Tambahkan import
 
 const router = express.Router();
 
-router.get('/menu', getMenu);
+// Gunakan middleware hanya pada route yang memerlukan autentikasi
+router.get('/menu', authMiddleware, getMenu);
 
 router.post('/pesanan',createPesanan);
 // router.get('/pesanan', getPesanan);
