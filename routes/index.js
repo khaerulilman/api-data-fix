@@ -15,6 +15,7 @@ router.get('/menu', getMenu);
 router.post('/pesanan', createPesanan);
 router.get('/pesanan', getPesanan);
 router.post('/feedback', createFeedback);
+router.get('/feedback',getFeedback)
 
 // Tambahkan middleware untuk autentikasi
 router.put('/pesanan/:id/status-pembayaran', updateStatusPembayaran);
