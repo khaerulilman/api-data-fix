@@ -7,6 +7,7 @@ import getPesanan from "../controllers/getPesananController.js";
 import updateStatusPembayaran from "../controllers/UpdatePembayaranController.js";
 import deletePesanan from "../controllers/deletePesananController.js";
 import updateStatusPesanan from "../controllers/UpdateStatusPesananController.js";
+import getFeedback from "../controllers/getFeedbackController.js";
 
 const router = express.Router();
 
