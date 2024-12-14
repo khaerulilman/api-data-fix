@@ -8,6 +8,7 @@ import updateStatusPembayaran from "../controllers/UpdatePembayaranController.js
 import deletePesanan from "../controllers/deletePesananController.js";
 import updateStatusPesanan from "../controllers/UpdateStatusPesananController.js";
 import getFeedback from "../controllers/getFeedbackController.js";
+import deleteFeedback from "../controllers/deleteFeedbackController.js";
 
 const router = express.Router();
 
@@ -22,5 +23,6 @@ router.get('/feedback',getFeedback)
 router.put('/pesanan/:id/status-pembayaran', updateStatusPembayaran);
 router.put('/pesanan/:id/status-pesanan', updateStatusPesanan);
 router.delete('/pesanan/:id', deletePesanan);
+router.delete('/feedback/:id', deleteFeedback);
 
 export default router;
