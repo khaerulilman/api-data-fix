@@ -10,10 +10,8 @@ import updateStatusPesanan from "../controllers/UpdateStatusPesananController.js
 
 const router = express.Router();
 
-// Middleware hanya diterapkan pada endpoint GET /menu
-router.get('/menu', getMenu);
-
-// Daftar route lainnya
+// Daftar route
+router.get('/menu',authMiddleware, getMenu);
 router.post('/pesanan', createPesanan);
 router.get('/pesanan', getPesanan);
 router.post('/feedback', createFeedback);
