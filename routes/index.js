@@ -17,8 +17,8 @@ router.get('/pesanan', getPesanan);
 router.post('/feedback', createFeedback);
 
 // Tambahkan middleware untuk autentikasi
-router.put('/pesanan/:id/status-pembayaran', authMiddleware, updateStatusPembayaran);
-router.put('/pesanan/:id/status-pesanan', authMiddleware, updateStatusPesanan);
-router.delete('/pesanan/:id', authMiddleware, deletePesanan);
+router.put('/pesanan/:id/status-pembayaran', updateStatusPembayaran);
+router.put('/pesanan/:id/status-pesanan', updateStatusPesanan);
+router.delete('/pesanan/:id', deletePesanan);
 
 export default router;
