@@ -1,5 +1,5 @@
 import express from "express";
-import getMenu from "../controllers/MenuController.js"; 
+import getMenu from "../controllers/MenuController.js";
 import createPesanan from "../controllers/testPesananController.js";
 import createFeedback from "../controllers/FeedbackController.js";
 import authMiddleware from '../middlewares/authMiddleware.js'; // Middleware untuk autentikasi
@@ -10,16 +10,15 @@ import updateStatusPesanan from "../controllers/UpdateStatusPesananController.js
 
 const router = express.Router();
 
-// Terapkan middleware authMiddleware untuk semua route
-router.use(authMiddleware);
-
 // Daftar route
 router.get('/menu', getMenu);
 router.post('/pesanan', createPesanan);
 router.get('/pesanan', getPesanan);
 router.post('/feedback', createFeedback);
-router.put('/pesanan/:id/status-pembayaran', updateStatusPembayaran);
-router.put('/pesanan/:id/status-pesanan', updateStatusPesanan);
-router.delete('/pesanan/:id', deletePesanan);
+
+// Tambahkan middleware untuk autentikasi
+router.put('/pesanan/:id/status-pembayaran', authMiddleware, updateStatusPembayaran);
+router.put('/pesanan/:id/status-pesanan', authMiddleware, updateStatusPesanan);
+router.delete('/pesanan/:id', authMiddleware, deletePesanan);
 
 export default router;
