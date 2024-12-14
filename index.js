@@ -1,11 +1,8 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import router from './routes/index.js';
 
-dotenv.config(); // Load konfigurasi dari .env
-
 const app = express();
-const PORT = process.env.PORT || 5000; // Gunakan PORT dari .env jika ada
+const PORT = 5000; // Tetapkan nilai port langsung di sini
 
 app.use(express.json());
 app.use(router);
