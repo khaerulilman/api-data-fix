@@ -7,7 +7,7 @@ import authMiddleware from '../middlewares/authMiddleware.js'; // Tambahkan impo
 const router = express.Router();
 
 // Gunakan middleware hanya pada route yang memerlukan autentikasi
-router.get('/menu', authMiddleware, getMenu);
+router.get('/menu', getMenu);
 
 router.post('/pesanan',createPesanan);
 // router.get('/pesanan', getPesanan);
