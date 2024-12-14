@@ -3,18 +3,24 @@ import dotenv from 'dotenv';
 dotenv.config(); // Membaca file .env
 
 const authMiddleware = (req, res, next) => {
-  const token = req.headers['authorization']?.split(' ')[1]; // Mengambil token dari header
-  const validToken = process.env.AUTH_TOKEN; // Token dari .env
+  try {
+    const authHeader = req.headers['authorization']; // Mengambil header Authorization
+    if (!authHeader) {
+      return res.status(401).json({ message: 'Token tidak ditemukan. Unauthorized' });
+    }
 
-  if (!token) {
-    return res.status(401).json({ message: 'Token tidak ditemukan. Unauthorized' });
+    const token = authHeader.split(' ')[1]; // Mendapatkan token setelah "Bearer "
+    const validToken = process.env.AUTH_TOKEN; // Token valid dari .env
+
+    if (!token || token !== validToken) {
+      return res.status(403).json({ message: 'Token tidak valid. Forbidden' });
+    }
+
+    next(); // Token valid, lanjutkan ke middleware berikutnya
+  } catch (error) {
+    console.error('Error di middleware autentikasi:', error.message);
+    res.status(500).json({ message: 'Kesalahan server pada autentikasi' });
   }
-
-  if (token !== validToken) {
-    return res.status(401).json({ message: 'Token tidak valid. Unauthorized' });
-  }
-
-  next(); // Token valid, lanjutkan ke handler berikutnya
 };
 
 export default authMiddleware;
